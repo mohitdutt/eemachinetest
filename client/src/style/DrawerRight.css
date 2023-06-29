@@ -1,0 +1,49 @@
+.right {
+    width: 250px;
+    background-color: #ffffffe6;
+    display: none;
+}
+
+.sideBarOpen {
+    display: block;
+}
+
+.sidebarHead {
+    flex-flow: wrap;
+    justify-content: space-around;
+    margin-top: 1rem;
+}
+
+.sidebarHead> h3{
+    margin-right: 5rem;
+    text-decoration: 2px solid red underline;
+}
+
+.button-delete {
+    border: 1px solid black;
+    background: white;
+    width: 5rem;
+    height: 1.5rem;
+    color: #484747;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.tag {
+    background-color: #6b6161;
+}
+
+.time-picker, .price {
+    font-size: 9px !important;
+}
+
+.datePara {
+    margin-right: 6rem;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.error {
+    color: red;
+    font-size: bold;
+}
