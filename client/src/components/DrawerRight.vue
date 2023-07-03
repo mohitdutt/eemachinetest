@@ -30,7 +30,6 @@
         <button class="button-delete" @click="clearInputs">Delete</button>
         <button class="button-positive" v-on:click="save">Save</button>
       </div>
-      
     </div>
   </template>
   
@@ -39,64 +38,14 @@
   import { mapGetters } from 'vuex';
   export default {
     computed: {
-  ...mapGetters(['getSideBarData', 'getEditDataArr']),
-  dateFormat: function(){
-    debugger; // eslint-disable-line no-debugger
-      const gmtDate = new Date(this.date);
-      const formatter = new Intl.DateTimeFormat('en-US');
-      const date = formatter.format(gmtDate);
-    return date
-  },
-  // titleComp(){
-  //   if(this.getSideBarData.actions == "Edit"){
-  //     return this.getEditDataArr.title
-  //   }else{
-  //     return this.title
-  //   }
-  // },
-  // descriptionComp(){
-  //   if(this.getSideBarData.actions == "Edit"){
-  //     return this.getEditDataArr.description
-  //   }else{
-  //     return this.description
-  //   }
-  // },
-  // dateComp(){
-  //   if(this.getSideBarData.actions == "Edit"){
-  //     return new Date(this.getEditDataArr.date).toLocaleDateString();
-  //   }else{
-  //     return this.date
-  //   }
-  // },
-  // startTimeComp(){
-  //   if(this.getSideBarData.actions == "Edit"){
-  //     return this.getEditDataArr.startTime
-  //   }else{
-  //     return this.startTime
-  //   }
-  // },
-  // endTimeComp(){
-  //   if(this.getSideBarData.actions == "Edit"){
-  //     return this.getEditDataArr.endTime
-  //   }else{
-  //     return this.endTime
-  //   }
-  // },
-  // typeComp(){
-  //   if(this.getSideBarData.actions == "Edit"){
-  //     return this.getEditDataArr.type
-  //   }else{
-  //     return this.type
-  //   }
-  // },
-  // priceComp(){
-  //   if(this.getSideBarData.actions == "Edit"){
-  //     return this.getEditDataArr.price
-  //   }else{
-  //     return this.price
-  //   }
-  // }
-},
+      ...mapGetters(['getSideBarData', 'getEditDataArr']),
+      dateFormat: function(){
+          const gmtDate = new Date(this.date);
+          const formatter = new Intl.DateTimeFormat('en-US');
+          const date = formatter.format(gmtDate);
+        return date
+      }
+    },
     name: 'DrawerRight',
     props: {
       updateSideBar: {
@@ -104,31 +53,20 @@
     },
     },
     data() {
-    return {
-      title: '',
-      description: '',
-      date: '',
-      startTime: "",
-      endTime: "",
-      type: "",
-      options: ["Consulation", "Telephone", "Ambulance"],
-      price: "",
-      allInputFilled: false,
-      error: false
-    };
-  },
-  components: {
-  },
-  
+      return {
+        title: '',
+        description: '',
+        date: '',
+        startTime: "",
+        endTime: "",
+        type: "",
+        options: ["Consulation", "Telephone", "Ambulance"],
+        price: "",
+        allInputFilled: false,
+        error: false
+      };
+    },
     methods: {
-      initValue: function(){
-        console.log("this.getSideBarData.actions", this     )
-        if(this.getSideBarData.actions == "Edit"){
-          console.log(this.getSideBarData.actions)
-          console.log(this.getEditDataArr)
-          
-        }
-      },
       removeSidebar: function(){
         this.$store.dispatch('updateSideBarData', {state: false, actions: ""});
         this.clearInputs()
@@ -174,9 +112,6 @@
           }
         }
       }
-    },
-    mounted(){
-      this.initValue()
-    },
+    }
   }
   </script>

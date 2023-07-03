@@ -89,8 +89,8 @@ app.get('/api/getData', (req, res) => {
   
     // Save the data to MongoDB
     Data.find()
-      .then((data) => {
-        res.status(200).json({ data:data, message: 'Data fetched successfully' });
+      .then((shiftData) => {
+        res.status(200).json({ data:shiftData, message: 'Data fetched successfully' });
       })
       .catch((error) => {
         res.status(500).json({ error: error });
@@ -98,14 +98,12 @@ app.get('/api/getData', (req, res) => {
 });
 
 app.get('/api/getDataById/:id', (req, res) => {
-    console.log(req.params.id)
     // Create a new data object
   
     // Save the data to MongoDB
     Data.findById(req.params.id)
-      .then((data) => {
-        console.log(data)
-        res.status(200).json({ data:data, message: 'Data fetched successfully' });
+      .then((shiftDataById) => {
+        res.status(200).json({ data:shiftDataById, message: 'Data fetched successfully' });
       })
       .catch((error) => {
         res.status(500).json({ error: error });
@@ -116,7 +114,3 @@ app.get('/api/getDataById/:id', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
-
-
-
-// https://cloud.mongodb.com/v2/649d0cc9d0dfd22957d37c10#/metrics/replicaSet/649d0d8a5034a84e4e974851/explorer/test/datas/find

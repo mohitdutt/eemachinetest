@@ -38,17 +38,11 @@ export default createStore({
         axios.post(`${serverURL}/saveData`, {
         body: payload
       })
-      .then(response => {
-        console.log(response)
-      })
-      .catch(e => {
-        console.log("error", e)
-      })
-        commit('SAVE', payload);
+      commit('SAVE', payload);
     },
     async fetchData({commit}){
-        await axios.get(`${serverURL}/getData`)
-      .then(response => {   
+      await axios.get(`${serverURL}/getData`)
+        .then(response => {   
         commit('SAVE', response.data.data);  
       })
       .catch(e => {

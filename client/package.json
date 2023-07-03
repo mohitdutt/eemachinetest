@@ -13,7 +13,6 @@
     "core-js": "^3.8.3",
     "element-plus": "^2.3.7",
     "element-ui": "^2.15.13",
-    "mdb-ui-kit": "^6.4.0",
     "mdb-vue-ui-kit": "^4.0.0",
     "vuetify": "^3.3.6",
     "vuex": "^4.1.0"
