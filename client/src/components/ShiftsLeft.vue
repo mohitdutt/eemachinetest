@@ -5,7 +5,6 @@
           <div class="d-flex mt-6">
             <span>Filter on price</span>
             <el-slider class="w-75 ml-10" v-model="sliderValue" :max="500"/>
-            <!-- <el-slider class="w-75 ml-10"  v-model="value" range show-stops :max="100" /> -->
           </div>
         </div>
         <div class="shifts mt-10">
@@ -40,8 +39,6 @@
   import "../style/ShiftsLeft.css";
   import '@fortawesome/fontawesome-free/css/all.css';
   import { mapGetters } from 'vuex';
-  // import { mapActions } from 'vuex';
-  // import axios from 'axios';
   export default {
     name: 'ShiftsLeft',
     data () {
@@ -59,15 +56,15 @@
     },
     watch: {
       async sliderValue(val){
-        const arr = this.$store.getters.getShiftsDataArr.filter(e=> e.price< val)
-        this.shiftsArray = [...arr]
+        const storedShiftsArray = this.$store.getters.getShiftsDataArr.filter(e=> e.price< val)
+        this.shiftsArray = [...storedShiftsArray]
       }
     },
     methods: {
       async getShiftsData() {
         await this.$store.dispatch('fetchData')
         this.shiftsArray = this.$store.getters.getShiftsDataArr;
-        this.shiftsArray.map(e=> {
+        this.shiftsArray.forEach(e=> {
           e.date = new Date(e.date).toLocaleDateString();
           e.startTime = new Date(e.startTime).toLocaleTimeString()
           e.endTime = new Date(e.endTime).toLocaleTimeString()
@@ -86,10 +83,9 @@
       this.$store.dispatch('updateSideBarData', {state: true, actions: "Create"});
     },
 
-    async editShifts(arg){
-      console.log(arg)
+    async editShifts(shiftId){
       await this.$store.dispatch('updateSideBarData', {state: true, actions: "Edit"});
-      await this.$store.dispatch('fetchDataById', {id: arg});
+      await this.$store.dispatch('fetchDataById', {id: shiftId});
       this.isSideBarOpen = !this.isSideBarOpen;
     }
   },
